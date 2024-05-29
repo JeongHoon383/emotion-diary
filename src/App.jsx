@@ -6,7 +6,6 @@ import Diary from "./pages/Diary";
 import New from "./pages/New";
 import Edit from "./components/Edit";
 import Notfound from "./pages/Notfound";
-import Button from "./components/Button";
 
 // 1. "/" : 모든 일기를 조회하는 Home 페이지
 // 2. "/new" : 새로운 일기를 작성하는 New 페이지
