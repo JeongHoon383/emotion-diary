@@ -49,11 +49,9 @@ const Editor = () => {
     content: "",
   });
 
-  const emotionId = 5;
-
   const onChangeInput = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
+    let name = e.target.name; // 어떤 요소에 입력이 들어온건지?, name을 설정해줘야 input 값에 date 에만 넣어줄 수 있음, name이 없으면 input 값에 뭘 넣어야 하는지 모름
+    let value = e.target.value; // 입력된 값이 무엇인지?
 
     if ((name = "createdDate")) {
       value = new Date(value);
@@ -81,9 +79,17 @@ const Editor = () => {
         <div className="emotion_list_wrapper">
           {emotionList.map((item) => (
             <EmotionItem
+              onClick={() =>
+                onChangeInput({
+                  target: {
+                    name: "emotionId",
+                    value: item.emotionId,
+                  },
+                })
+              }
               key={item.emotionId}
               {...item}
-              isSelected={item.emotionId === emotionId}
+              isSelected={item.emotionId === input.emotionId}
             />
           ))}
         </div>
