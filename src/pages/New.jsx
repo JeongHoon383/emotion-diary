@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DiaryDispatchContext } from "../App";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import Editor from "../components/Editor";
@@ -6,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 const New = () => {
   const nav = useNavigate();
+  const { onCreate } = useContext(DiaryDispatchContext);
+
+  const onSubmit = (input) => {
+    onCreate(input.createdDate.getTime(), input.emotionId, input.content);
+  };
 
   return (
     <div>
@@ -20,7 +26,7 @@ const New = () => {
           />
         }
       />
-      <Editor />
+      <Editor onSubmit={onSubmit} />
     </div>
   );
 };

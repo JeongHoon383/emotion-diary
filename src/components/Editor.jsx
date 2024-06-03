@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import EmotionItem from "./EmotionItem";
 import "./Editor.css";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 const emotionList = [
   {
@@ -42,25 +43,32 @@ const getStringedDate = (targetDate) => {
   return `${year}-${month}-${date}`;
 };
 
-const Editor = () => {
+const Editor = ({ onSubmit }) => {
   const [input, setInput] = useState({
     createdDate: new Date(),
-    emotionId: 3,
+    emotionId: 4,
     content: "",
   });
+  const nav = useNavigate();
 
   const onChangeInput = (e) => {
     let name = e.target.name; // 어떤 요소에 입력이 들어온건지?, name을 설정해줘야 input 값에 date 에만 넣어줄 수 있음, name이 없으면 input 값에 뭘 넣어야 하는지 모름
     let value = e.target.value; // 입력된 값이 무엇인지?
 
-    if ((name = "createdDate")) {
+    if (name === "createdDate") {
       value = new Date(value);
+      // value를 넣었을 때 초기 값으로 돌아감.
     }
 
     setInput({
       ...input,
       [name]: value,
     });
+  };
+
+  const onClickSubmitButton = () => {
+    onSubmit(input);
+    nav("/", { replace: true });
   };
 
   return (
@@ -76,17 +84,17 @@ const Editor = () => {
       </section>
       <section className="emotion_section">
         <h4>오늘의 감정</h4>
-        <div className="emotion_list_wrapper">
+        <div name="emotionList" className="emotion_list_wrapper">
           {emotionList.map((item) => (
             <EmotionItem
-              onClick={() =>
+              onClick={() => {
                 onChangeInput({
                   target: {
                     name: "emotionId",
                     value: item.emotionId,
                   },
-                })
-              }
+                });
+              }}
               key={item.emotionId}
               {...item}
               isSelected={item.emotionId === input.emotionId}
@@ -96,11 +104,20 @@ const Editor = () => {
       </section>
       <section className="content_section">
         <h4>오늘의 일기</h4>
-        <textarea placeholder="오늘은 어땠나요?" />
+        <textarea
+          value={input.content}
+          onChange={onChangeInput}
+          name="content"
+          placeholder="오늘은 어땠나요?"
+        />
       </section>
       <section className="button_section">
         <Button text={"취소하기"} />
-        <Button text={"작성완료"} type={"POSITIVE"} />
+        <Button
+          onClick={onClickSubmitButton}
+          text={"작성완료"}
+          type={"POSITIVE"}
+        />
       </section>
     </div>
   );
