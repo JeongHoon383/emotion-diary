@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EmotionItem from "./EmotionItem";
 import "./Editor.css";
 import Button from "./Button";
@@ -43,13 +43,25 @@ const getStringedDate = (targetDate) => {
   return `${year}-${month}-${date}`;
 };
 
-const Editor = ({ onSubmit }) => {
+const Editor = ({ initData, onSubmit }) => {
   const [input, setInput] = useState({
     createdDate: new Date(),
     emotionId: 4,
     content: "",
   });
   const nav = useNavigate();
+
+  console.log(initData);
+  console.log(input);
+
+  useEffect(() => {
+    if (initData) {
+      setInput({
+        ...initData,
+        createdDate: new Date(Number(initData.createdDate)),
+      });
+    }
+  }, [initData]);
 
   const onChangeInput = (e) => {
     let name = e.target.name; // 어떤 요소에 입력이 들어온건지?, name을 설정해줘야 input 값에 date 에만 넣어줄 수 있음, name이 없으면 input 값에 뭘 넣어야 하는지 모름
@@ -68,7 +80,6 @@ const Editor = ({ onSubmit }) => {
 
   const onClickSubmitButton = () => {
     onSubmit(input);
-    nav("/", { replace: true });
   };
 
   return (
