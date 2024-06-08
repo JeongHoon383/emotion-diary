@@ -58,7 +58,7 @@ export const DiaryDispatchContext = createContext();
 
 function App() {
   const [data, dispatch] = useReducer(reducer, mockData);
-  const idRef = useRef(3);
+  const idRef = useRef(5);
 
   // 새로운 일기 추가
   const onCreate = (createdDate, emotionId, content) => {
