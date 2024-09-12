@@ -21,7 +21,6 @@ const DiaryList = ({ data }) => {
         return Number(b.createdDate) - Number(a.createdDate);
       }
     });
-    // toSorted를 쓰는이유 : 원본 배열은 그대로 놔두고 정렬된 새로운 배열을 반환
   };
 
   const sortedData = getSortedData();

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { DiaryDispatchContext, DiaryStateContext } from "../App";
-import React, { useContext, useEffect, useState } from "react";
+import { DiaryDispatchContext } from "../App";
+import React, { useContext } from "react";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import Editor from "../components/Editor";
@@ -16,7 +16,7 @@ const Edit = () => {
 
   const onClickDelete = () => {
     if (window.confirm("일기를 정말 삭제할까요? 다시 복구되지 않아요!")) {
-      onDelete(Number(params.id));
+      onDelete(parseInt(params.id));
       nav("/", { replace: true });
     }
   };
@@ -24,7 +24,7 @@ const Edit = () => {
   const onSubmit = (input) => {
     if (window.confirm("일기를 정말 수정할까요?")) {
       onUpdate(
-        params.id,
+        parseInt(params.id),
         input.createdDate.getTime(),
         input.emotionId,
         input.content

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { DiaryDispatchContext } from "../App";
 import Header from "../components/Header";
 import Button from "../components/Button";

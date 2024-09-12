@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import EmotionItem from "./EmotionItem";
 import "./Editor.css";
 import Button from "./Button";
-import { useNavigate } from "react-router-dom";
 import { emotionList } from "../util/constants";
 import getStringedDate from "../util/get-stringed-date";
 
@@ -12,7 +11,6 @@ const Editor = ({ initData, onSubmit }) => {
     emotionId: 4,
     content: "",
   });
-  const nav = useNavigate();
 
   useEffect(() => {
     if (initData) {
@@ -24,12 +22,11 @@ const Editor = ({ initData, onSubmit }) => {
   }, [initData]);
 
   const onChangeInput = (e) => {
-    let name = e.target.name; // 어떤 요소에 입력이 들어온건지?, name을 설정해줘야 input 값에 date 에만 넣어줄 수 있음, name이 없으면 input 값에 뭘 넣어야 하는지 모름
-    let value = e.target.value; // 입력된 값이 무엇인지?
+    let name = e.target.name;
+    let value = e.target.value;
 
     if (name === "createdDate") {
       value = new Date(value);
-      // value를 넣었을 때 초기 값으로 돌아감.
     }
 
     setInput({
