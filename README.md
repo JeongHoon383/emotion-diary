@@ -102,7 +102,7 @@
 ![감정 일기장 상세 페이지](https://github.com/user-attachments/assets/41f19539-2ff9-4967-a494-fc4b8e5629bf)
 
 ## 트러블 슈팅
-* [일기 수정 후 삭제 불가 이슈](https://github.com/JeongHoon383/emotion-diary.wiki.git)
+* [일기 수정 후 삭제 불가 이슈](https://github.com/JeongHoon383/emotion-diary/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%EC%9D%BC%EA%B8%B0-%EC%88%98%EC%A0%95-%ED%9B%84-%EC%82%AD%EC%A0%9C-%EB%B6%88%EA%B0%80-%EC%9D%B4%EC%8A%88#%EC%9D%BC%EA%B8%B0-%EC%88%98%EC%A0%95-%ED%9B%84-%EC%82%AD%EC%A0%9C-%EB%B6%88%EA%B0%80-%EC%9D%B4%EC%8A%88)
 
 ## 성능 개선
 * 이미지 최적화
