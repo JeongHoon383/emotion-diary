@@ -16,6 +16,17 @@
 * 버전 관리 : Github
 * 배포 환경 : Vercel
 
+## 채택한 개발 기술
+### React, React Context
+* React
+  * 컴포넌트화를 통해 추후 유지보수와 재사용성을 고려
+  * 헤더, 버튼 등 중복되는 부분을 컴포넌트화를 통해 리소스 절약
+* React Context
+  * prop drilling 문제를 해결해 컴포넌트 트리 깊은 곳까지 데이터를 효율적으로 전달
+  * redux가 아닌 React Context 사용 이유
+    *  Redux에 비해 간단한 전역 상태 관리 용이
+    *  소규모 프로젝트나 복잡하지 않은 상태를 관리할 때 더 직관적이고 간편하게 사용 가능
+
 ## 프로젝트 구조
 ```
 ├── public
@@ -63,8 +74,6 @@
 │   └── App.jsx
 ```
 
-## 트러블 슈팅
-
 ## 페이지별 기능
 
 ### [초기화면]
@@ -91,4 +100,13 @@
 * 상세페이지에서는 일기 날짜, 감정, 내용이 확인 가능하며 뒤로 가기와 수정하기 버튼을 통해 해당 페이지로 이동이 가능합니다.
 
 ![감정 일기장 상세 페이지](https://github.com/user-attachments/assets/41f19539-2ff9-4967-a494-fc4b8e5629bf)
+
+## 트러블 슈팅
+* [일기 수정 후 삭제 불가 이슈](https://github.com/JeongHoon383/emotion-diary.wiki.git)
+
+## 성능 개선
+* 이미지 최적화
+  * 이미지를 public 폴더가 아닌 src/assets 폴더에 넣어 줌으로써, 브라우저 메모리에 캐싱
+  * assets 폴더에 넣어준 이미지는 요청 크기 및 시간이 최적화 됨.
+  <img width="732" alt="스크린샷 2024-09-13 오후 5 41 30" src="https://github.com/user-attachments/assets/b0382c1e-30c4-4a99-a891-839c198c6a4a">
 
